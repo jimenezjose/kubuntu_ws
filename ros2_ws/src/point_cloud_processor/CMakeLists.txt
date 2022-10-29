@@ -11,17 +11,10 @@ find_package(ament_cmake_auto REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-
+# Add PCL dependency
+# Source: https://pointclouds.org/documentation/tutorials/using_pcl_pcl_config.html
 find_package(PCL REQUIRED)
-
-
-#include_directories(${PCL_INCLUDE_DIRS})
-#link_directories(${PCL_LIBRARY_DIRS})
-#add_definitions(${PCL_DEFINITIONS})
-#add_executable(pcd_write_test pcd_write.cpp)
-#target_link_libraries(pcd_write_test ${PCL_LIBRARIES})
-
-
+include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
