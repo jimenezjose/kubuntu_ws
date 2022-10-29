@@ -11,6 +11,20 @@ find_package(ament_cmake_auto REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
+
+find_package(PCL REQUIRED)
+
+
+#include_directories(${PCL_INCLUDE_DIRS})
+#link_directories(${PCL_LIBRARY_DIRS})
+#add_definitions(${PCL_DEFINITIONS})
+#add_executable(pcd_write_test pcd_write.cpp)
+#target_link_libraries(pcd_write_test ${PCL_LIBRARIES})
+
+
+link_directories(${PCL_LIBRARY_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+
 ament_auto_find_build_dependencies(REQUIRED
   ${${PROJECT_NAME}_BUILD_DEPENDS}
   ${${PROJECT_NAME}_BUILDTOOL_DEPENDS}
@@ -25,6 +39,8 @@ set(${PROJECT_NAME}_SRC
 ament_auto_add_executable(${PROJECT_NAME}_node_exe
   ${${PROJECT_NAME}_SRC}
 )
+
+target_link_libraries(${PROJECT_NAME}_node_exe ${PCL_LIBRARIES})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
